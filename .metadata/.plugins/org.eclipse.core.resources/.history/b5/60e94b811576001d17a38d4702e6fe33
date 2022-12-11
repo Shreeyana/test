@@ -1,0 +1,43 @@
+package Actual;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import Actual.userManagement;
+
+class pageobject {
+	WebDriver driver;
+	String baseurl;
+	userManagement um;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		driver=new ChromeDriver();
+		baseurl="http://merit.ausnep.com/login";
+		um=new userManagement(driver);
+		  
+		//Maximize the window
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+	}
+	@Test
+	void test() {
+		um.clickUM();
+		um.Addadmin("Ramesh Basnet");
+	}
+	@AfterEach
+	void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.manage().window().minimize();
+		driver.quit();
+	}
+
+	
+
+}

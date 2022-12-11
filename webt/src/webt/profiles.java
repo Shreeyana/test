@@ -1,0 +1,48 @@
+package webt;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.ProfilesIni;
+
+class profiles {
+ WebDriver driver;
+ String baseurl;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		
+		//firefox profile to create a new profile 
+		ProfilesIni profile= new ProfilesIni();
+		FirefoxProfile fx=profile.getProfile("automationprofile");
+		
+		FirefoxOptions fc=new FirefoxOptions();
+		fc.setProfile(fx);
+		driver =new FirefoxDriver();
+		baseurl="https://learn.letskodeit.com/";
+		driver.get(baseurl);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+		 
+		
+	}
+	
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	
+
+}

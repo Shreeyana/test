@@ -1,0 +1,23 @@
+package waits;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class explicitwaitutilities {
+	WebDriver driver;
+	 
+	public  explicitwaitutilities(WebDriver driver) {
+		this.driver=driver;
+	
+	}
+	
+	public WebElement waitforElement(By loc,int timeout) {
+		WebElement element=null;
+		try {
+			w
+		}
+		
+		
+	}
+}

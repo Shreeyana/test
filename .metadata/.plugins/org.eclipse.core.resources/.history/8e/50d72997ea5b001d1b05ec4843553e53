@@ -1,0 +1,71 @@
+package webt;
+
+import static org.junit.Assert.*;
+
+import java.time.Duration;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class test3 {
+	WebDriver driver = new ChromeDriver();
+	String baseurl;
+	String currenturl;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("one");
+		
+	} 
+
+	/*@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("four");
+	} */
+
+	@Before
+	public void setUp() throws Exception {
+		baseurl="https://learn.letskodeit.com/";
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+		//driver.manage().window().minimize();
+		//System.out.println("Two");
+	}
+	
+	@Test
+	public void openurl() {
+		driver.get(baseurl);
+		String title = driver.getTitle();
+		System.out.println("Title url:" + title);
+		 //String urlnavigate ="https://sso.teachable.com/secure/42299/identity/login/password";
+		 driver.navigate().to("https://sso.teachable.com/secure/42299/identity/login/password");
+		  currenturl = driver.getCurrentUrl();
+		System.out.println("Title url:" + currenturl);
+	
+		
+		
+		//System.out.println("working");
+		/*driver.findElement(By.xpath("/html/body/header/div/div/div/div/ul/li[2]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("shreeyana@gmail.com");
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("12345");
+		driver.findElement(By.xpath("/html/body/main/div/form/div[4]/input")).click();*/
+			
+	}
+	@After
+	public void tearDown() throws Exception {
+		driver.navigate().back();
+		driver.getCurrentUrl();
+		System.out.println("afetr back curent url is home page:" + currenturl);
+		driver.quit();
+		//System.out.println("three");
+	}
+
+	
+	
+}

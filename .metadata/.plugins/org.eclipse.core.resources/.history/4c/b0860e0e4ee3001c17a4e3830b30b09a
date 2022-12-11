@@ -1,0 +1,38 @@
+package webtest;
+
+
+
+import java.sql.Driver;
+
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class Testunit {
+	String baseurl;
+	WebDriver driver;
+	@BeforeEach
+	void setUp() throws Exception {
+		WebDriver driver =new ChromeDriver();
+		 baseurl="http://laxmipay.ausnep.com/auth";
+		//System.out.println("Shreeyana");
+		//letcure 70
+	
+	}
+	@Test
+	void test() {
+		driver.get(baseurl);
+		
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		
+	}
+
+	
+
+}

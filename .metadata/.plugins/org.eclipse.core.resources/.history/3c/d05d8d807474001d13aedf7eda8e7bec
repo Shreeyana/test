@@ -1,0 +1,67 @@
+package utilities;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.time.Duration;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import utilities.modifiers;
+
+class Modules {
+	WebDriver driver;
+	String baseurl,T;
+	String failure, Parenturl;
+	modifiers m;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		driver=new ChromeDriver();
+		m=new modifiers(driver);
+		baseurl="http://merit.ausnep.com/login";
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.manage().window().maximize();
+	}
+	
+	
+	@Test
+	void test()throws Exception {
+		driver.get(baseurl);
+		String Parenturl=driver.getCurrentUrl();
+		//For Login 
+		WebElement login=driver.findElement(By.xpath("//input[@id='email']"));
+		login.sendKeys("admina@test.com");
+		WebElement pwsd=driver.findElement(By.id("password"));
+		pwsd.sendKeys("admin123");
+		WebElement logb=driver.findElement(By.xpath("//button[@class='btn btn-primary btn-rounded']"));
+		logb.click();
+		Thread.sleep(1000);
+		String current =driver.getCurrentUrl();
+		if(!Parenturl.equals(current)) {
+			System.out.println("LOGIN SUCCESS");
+		}
+		else {
+			WebElement failure =m.getlogin("/html/body/div[2]/div/div/div/div/div/div/div/div[2]/form/div[1]/span/strong");
+			//System.out.println("failure:"+failure.isEnabled());
+			//if(failure.isEnabled()) {
+				System.out.println("LOGIN FAILURE");
+			//}
+		}
+			
+		}
+		
+	@AfterEach
+	void tearDown() throws Exception {
+  driver.quit();
+}
+}

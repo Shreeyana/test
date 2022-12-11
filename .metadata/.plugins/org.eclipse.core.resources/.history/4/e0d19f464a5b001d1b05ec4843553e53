@@ -1,0 +1,55 @@
+package webt;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class test3 {
+	WebDriver driver;
+	String baseurl;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("one");
+		
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("four");
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		baseurl="https://learn.letskodeit.com/";
+		driver.manage().window().minimize();
+		System.out.println("Two");
+	}
+	
+	
+	@After
+	public void tearDown() throws Exception {
+		System.out.println("three");
+	}
+
+	@Test
+	public void test1() {
+		driver.get(baseurl);
+	}
+	@Test
+	public void test2() {
+		driver.findElement(By.xpath("/html/body/header/div/div/div/div/ul/li[2]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("shreeyana@gmail.com");
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("12345");
+		System.out.println("Invali Login crdentials");
+	}
+	
+
+}

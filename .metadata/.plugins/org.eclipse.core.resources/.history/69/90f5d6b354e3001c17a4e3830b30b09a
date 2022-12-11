@@ -1,0 +1,40 @@
+package webtest;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class Testunit {
+	
+	String baseurl;
+	WebDriver driver;
+	@BeforeEach
+	void setUp() throws Exception {
+
+		driver =new ChromeDriver();
+		 baseurl="https://laxmipay.remittancemanagementsystem.com/";
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		System.out.println("Shreeyana");
+	}
+	@Test
+	void test() {
+		driver.get(baseurl);
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("shreeyana@gmail");
+		 driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("123567");
+		 driver.findElement(By.xpath("//*[@id=\"root\"]/main/div/div/div/form/div[4]/div/div/div/button/span")).click();
+		 System.out.println("Print Invalid Crdentials");
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		
+	}
+
+	
+
+}

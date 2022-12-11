@@ -1,0 +1,76 @@
+package Actual;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+
+public class userManagement {
+	WebDriver driver;
+	
+	//Login Process
+	@FindBy(xpath="//input[@id='email']")
+    WebElement username;
+	@FindBy(id="password")
+    WebElement pass;
+	
+    @FindBy(id="toggle_nav_btn")
+    WebElement hambuton;
+     
+    @FindBy(xpath="/html/body/div[2]/div[1]/div/ul/li[5]/a/div[2]")
+    WebElement usermanagement;
+    
+    @FindBy(id="user_dr")
+    WebElement admin;
+    
+    //Add Admin Data Details
+    @FindBy(id="name")
+    WebElement fullname;
+    @FindBy(id="email")
+    WebElement email;
+    @FindBy(id="password")
+    WebElement Password;
+    @FindBy(id="password_confirmation")
+    WebElement Repswd;
+    @FindBy(id="address")
+    WebElement Address;
+    @FindBy(id="phone")
+    WebElement phoneno;
+    @FindBy(id="image")
+    WebElement userpic;
+    //Button And Reset
+    @FindBy(xpath="//button[@class=\\\"btn btn-danger\\\"]")
+    WebElement rset;
+    @FindBy(xpath="//button[@class=\\\"btn btn-success\\\"]")
+    WebElement submit;
+    public userManagement(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+    public void login(String data) {
+ 	   username.sendKeys(data);
+ 	   pass.sendKeys(data);
+     }
+    public void clickUM() {
+    	hambuton.click();
+    	usermanagement.click();
+    	admin.click();
+    }
+   public void Addadmin(String data) {
+	   fullname.sendKeys(data);
+	   email.sendKeys(data);
+	   Password.sendKeys(data);
+	   Repswd.sendKeys(data);
+	   Address.sendKeys(data);
+	   phoneno.sendKeys(data);
+	   userpic.sendKeys(data);
+    }
+   public void adminsubmit() {
+   	rset.click();
+   	submit.click();
+   }
+ 
+}
+

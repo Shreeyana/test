@@ -1,0 +1,10 @@
+package webt;
+
+public class usefulelements {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

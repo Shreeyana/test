@@ -1,0 +1,43 @@
+package webtest;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class TestMethod {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("Hello shreeyana From Top of the World");
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("Hello shreeyana From Top of the Asia");
+	}
+	
+
+	@Before
+	public void setUp() throws Exception {
+		System.out.println("Hello shreeyana From Top of the America");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		System.out.println("Hello shreeyana ");
+	}
+
+	@Test
+	public void yyy1() {
+		fail("Not yet implemented1");
+	}
+	public void yyy2() {
+		fail("Not yet implemented2");
+	}
+	
+
+}

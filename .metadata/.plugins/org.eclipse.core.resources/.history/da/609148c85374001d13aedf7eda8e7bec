@@ -1,0 +1,74 @@
+package utilities;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.time.Duration;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import utilities.modifiers;
+
+class Modules {
+	WebDriver driver;
+	String baseurl,T;
+	modifiers m;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		driver=new ChromeDriver();
+		m=new modifiers(driver);
+		baseurl="http://merit.ausnep.com/login";
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.manage().window().maximize();
+	}
+	
+	
+	@Test
+	void test() {
+		driver.get(baseurl);
+		//For Login 
+		WebElement login=driver.findElement(By.xpath("//input[@id='email']"));
+		login.sendKeys("admin@test.com");
+		WebElement pwsd=driver.findElement(By.id("password"));
+		pwsd.sendKeys("admin123");
+		WebElement logb=driver.findElement(By.xpath("//button[@class='btn btn-primary btn-rounded']"));
+		logb.click();
+		if(logb.equals(logb)) {
+			System.out.println("Login success");
+		}
+		/*WebElement failure =m.getlogin("/html/body/div[2]/div/div/div/div/div/div/div/div[2]/form/div[1]/span/strong");
+	 	   if(failure.equals(failure)) {
+			System.out.println("Login Failure");
+	 	   }*/
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		String filename = getRandomString(5) + ".png";
+		String directory = System.getProperty("user.dir") + "//screenshots//";
+		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(sourceFile, new File(directory + filename));
+		driver.quit();
+		
+		
+	}
+	public static String getRandomString(int length) {
+		StringBuilder sb = new StringBuilder();
+		String characters = "shreeyana";
+		for (int i = 0; i < length; i++) {
+			int index = (int)(Math.random() * characters.length());
+			sb.append(characters.charAt(index));
+		}
+		return sb.toString();
+}
+}

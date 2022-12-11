@@ -1,0 +1,43 @@
+package webt;
+
+import java.time.Duration;
+
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class usefulelements {
+	private WebDriver driver;
+	private String baseurl;			
+@BeforeClass
+	public  void setUp() throws Exception {
+	driver=new FirefoxDriver();
+	baseurl="https://courses.letskodeit.com/practice";
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+	
+	}	
+@Test
+     public void Test() {
+	driver.get(baseurl);
+	WebElement text=driver.findElement(By.xpath("//*[@id=\"openwindow\"]"));
+	String text2 =text.getText();
+	System.out.println("print the tesxt is:" +text2);
+}
+
+
+@After
+   public  void tearDown() throws Exception {
+	Thread.sleep(2000);
+	driver.quit();
+}
+}
+
+
+
+
+	
+

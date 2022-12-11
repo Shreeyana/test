@@ -1,0 +1,43 @@
+package webt;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+class uswfulelement {
+	 WebDriver driver;
+   // String baseurl;
+	
+@BeforeClass
+		  void setUp() throws Exception {
+       // WebDriverManager.Chrome().setup();
+		driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+		 
+		}	
+
+@Test
+		void test() {
+	    driver.get("https://courses.letskodeit.com/practice");;
+			WebElement text=driver.findElement(By.xpath("//*[@id=\"openwindow\"]"));
+			String text2 =text.getText();
+			System.out.println("print the tesxt is:" +text2);
+		}
+@AfterEach
+	void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	
+	}
+}

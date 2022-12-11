@@ -1,0 +1,12 @@
+package Actual;
+
+import org.openqa.selenium.WebDriver;
+
+public class userManagement {
+	WebDriver driver;
+	
+	public userManagement(WebDriver driver) {
+		this.driver=driver;
+	}
+    @findBy()
+}

@@ -1,0 +1,50 @@
+package webt;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class hiddenelement {
+    WebDriver driver;
+    String baseurl;
+    
+	@BeforeEach
+	void setUp() throws Exception {
+		driver =new ChromeDriver();
+		baseurl="https://courses.letskodeit.com/practice";
+		driver.get(baseurl);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	@Test
+	void test() throws Throwable {
+		WebElement textbox =driver.findElement(By.xpath("//*[@id=\"displayed-text\"]"));
+		System.out.println("TEXTBOX IS DISPLAYED :"+textbox.isDisplayed());
+		Thread.sleep(1000);
+		
+		WebElement hidebox =driver.findElement(By.id("hide-textbox"));
+		hidebox.click();
+		System.out.println("IS Hide:"+hidebox.isEnabled());
+		
+		Thread.sleep(2000);
+		WebElement Showbox =driver.findElement(By.id("show-textbox"));
+		Showbox.click();
+		System.out.println("IS SHOW:"+Showbox.isEnabled());
+		System.out.println("TEXTBOX IS DISPLAYED :"+textbox.isDisplayed());
+		System.out.println("IS Hide:"+hidebox.isEnabled());
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		driver.manage().window().minimize();
+		driver.manage().window().getSize();
+	}
+}

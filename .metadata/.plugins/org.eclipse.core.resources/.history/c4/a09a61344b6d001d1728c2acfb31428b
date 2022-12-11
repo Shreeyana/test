@@ -1,0 +1,31 @@
+package webt;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class generic {
+	WebDriver driver;
+	
+	public generic(WebDriver driver) {
+		this.driver =driver ;
+	} 
+		public WebElement getElement (String path) {
+			path=path.toLowerCase();
+			/*if(ty.equals("id")) {
+				System.out.println("Found with ID:"+loc);
+				return this.driver.findElement(By.id(loc));
+			}*/
+			 if (path.equals("xpath")) {
+				System.out.println("Found with xpath:"+path);
+				return this.driver.findElement(By.xpath(path));
+			}
+			else {
+				System.out.println("NOT FOUND");
+				return null;
+			}
+	                  }
+	}
+	
+
+

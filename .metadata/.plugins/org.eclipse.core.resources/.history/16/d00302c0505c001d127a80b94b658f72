@@ -1,0 +1,55 @@
+package webt;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class listRadio {
+	WebDriver driver;
+	String baseurl;
+	
+	@BeforeEach
+	void setUp() throws Exception {
+		driver= new ChromeDriver();
+		baseurl ="http://gurugfoodadmin.ausnep.com/";
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
+		driver.manage().window().maximize();
+		driver.get(baseurl);
+		}
+	
+	@Test
+	void test() {
+		boolean isChecked =false;
+		driver.findElement(By.xpath("/html/body/div/div/div/form/div[3]/div[1]/input")).sendKeys("super@gmail.com");
+		driver.findElement(By.xpath("/html/body/div/div/div/form/div[3]/div[2]/input")).sendKeys("12345678");
+		driver.findElement(By.xpath("/html/body/div/div/div/form/div[4]/button")).click();		
+		  driver.navigate().to("http://gurugfoodadmin.ausnep.com/coupon");
+		  driver.findElement(By.xpath("/html/body/div/section[2]/div/div/div[2]/div[1]/div[1]/button")).click();
+		  List<WebElement> radiobuttons = driver.findElements(By.xpath("//input[contains(@type,'radio')and contains(@name,'couponcodeType')]"));
+		  int size = radiobuttons.size(); 
+		  System.out.println("list of radio buttons :" + radiobuttons);
+		  System.out.println("Size of radiobuttons:" + size);
+		  for( int i=0; i<size ; i++) {
+			  isChecked = radiobuttons.get(i).isEnabled();
+			  if(!isChecked) {
+				  radiobuttons.get(i).click();
+			  }
+		  }
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	
+
+}

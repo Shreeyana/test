@@ -1,0 +1,15 @@
+package Actual;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class userManagement {
+	WebDriver driver;
+	
+	public userManagement(WebDriver driver) {
+		this.driver=driver;
+	}
+    @FindBy(id="toggle_nav_btn")
+    WebElement hambuton;
+}
